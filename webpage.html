@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Group Project 1</title>
+	<!-- Reference to browser Favicon logo. -->
+	<link rel="icon" type="image/png" href="assets/images/logoicon.png"/>
+	<!-- Reference to css reset.min css sheet. -->	
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.min.css">
+    <!-- Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- Reference to materialize.min css sheet. -->
+	<link rel="stylesheet" type="text/css" href="assets/css/materialize.min.css">
+	<!-- Reference to main.min css sheet. -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.min.css">
+	<!-- Ensures the page is mobile responsive. -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<!-- Left-fixed position that contains the logo, carousel image slider and collapsible info bar. Removes when the page strinks to or more than 768px.-->
+	<div class="myContainer hide-768px">
+
+		<a class='modal-trigger btn orange darken-2 empty-typewriter-text myContainer-width-adjustment myContainer-height-adjustment' href='#modal3'><img class="logoimg" src="assets/images/logo.png"></a>   
+		
+		<!-- Weather Data. -->
+		<div class="weather"></div>
+
+	</div> <!-- End of the myContainer div. -->
+
+  <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>	<!-- Container for the top bar which contains a search box and image box. -->
+	<div class="orange darken-2 topwrapper">
+
+		<!-- Modal 1 search box trigger. -->
+	    <a class="modal-trigger waves-effect waves-black" href="#modal1"><p class="iconsizer"><i class="small material-icons white-text icon-button icon-height-adjuster center type-it-text">search</i></p></a>
+
+		<!-- Modal 2 image box trigger. -->
+	    <a class="modal-trigger waves-effect waves-black right" href="#modal2"><p class="iconsizer"><i class="small material-icons white-text icon-button icon-height-adjuster center">view_module</i></p></a>
+	</div> <!-- End of the top bar. -->
+	
+	<!-- Container for the google map api. -->
+	<div class="mapwrapper">
+		<!-- Thumb Up Image. -->
+		<div id="thumbUp">
+			<a onclick="Materialize.toast('Thanks for liking!', 4000, 'rounded')"><img id="fireBaseThumbUp" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Do you like our page?" src="assets/images/thumb-up.png" alt=""></a>
+			<!-- <img id="fireBaseThumbUp" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Do you like our page?" src="assets/images/thumb-up.png" alt=""> -->
+		</div>
+		
+		<!-- Thumb Down Image. -->
+		<div id="thumbDown">
+			<a onclick="Materialize.toast('Ahh... Thanks for liking!', 4000, 'rounded')"><img id="firebaseThumbDown" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Or...?" src="assets/images/thumb-down.png" alt=""></a>
+
+			<!-- <img id="firebaseThumbDown" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Or...?" src="assets/images/thumb-down.png" alt="">
+ -->		</div>
+
+		<!-- Google Map Space -->
+		<div id="map">
+		</div>
+	</div>  <!-- End of google map api. -->
+
+		<!-- Weather Info. -->
+		<div class="invisible">
+			<div id="slide-out" class="side-nav">
+				
+				<!-- Container for the mobile weather data. -->
+				<div class="myNavContainer">
+					<a class='modal-trigger btn orange darken-2 empty-typewriter-text myContainer-width-adjustment myContainer-height-adjustment' href='#modal3'><img class="logoimg" src="assets/images/logo.png"></a>   
+					
+					<!-- Weather Data. -->
+					<div class="weather"></div>
+
+				</div>
+			</div>
+
+			<a href="#" data-activates="slide-out" class="button-collapse show-on-large"><img src="assets/images/weatherArrow.png" id="weatherSideNav"></a>
+		</div>
+
+
+
+	<!-- Container for the footer which contains our story, copyright and web creators. -->
+	<div class="footerwrapper">	
+		<footer class="orange darken-2 center footer">
+			<div class="row footer-margin-change">
+				
+				<!-- Modal 3 our story trigger. -->
+				<div class="col s3 orange darken-2 footer-margin-change">
+					<a class="modal-trigger waves-effect waves-black footer-modal-sizer footer-adjuster empty-typewriter-text" href="#modal3"><p><i class="small material-icons white-text footer-icon-height">info_outline</i></p></a>
+	 			</div>
+				
+				<!-- Copyright Section -->
+				<div class="col s6 orange darken-2 footer-margin-change copyright-border">
+					<p class="white-text footer-adjuster footer-margin-change footer-copyright-sizer copyright-height">© 2016 Tuan Tran, Marcus Lam, Brandon Short</p>
+				</div>
+
+				<!-- Modal 4 web creators trigger -->
+				<div class="col s3 orange darken-2 footer-margin-change">
+					<a class="modal-trigger waves-effect waves-black footer-modal-sizer footer-adjuster" href="#modal4"><p><i class="small material-icons white-text footer-icon-height">perm_identity</i></p></a>
+	 			</div>				
+	 		</div>	
+		</footer>
+	</div> <!-- End of the footer container. -->	
+
+	<!-- Modal 1 Info. -->
+	<div id="modal1" class="modal">
+		<div class="modal-content">
+	    	<h4 class="center orange-text text-darken-2">What do you want to search for?</h4>
+	    	<h5 class="center orange-text text-darken-2 type-it"></h5>
+			
+			<!-- Meetup api search form. -->
+			<form action="" method="">
+				<div class="row">
+
+					<!-- Search Input. -->
+					<div class="input-field col s6">
+			    		<input id="textInput" type="text" required>
+			    		<label for="textInput">Subject</label>
+					</div>
+					
+					<!-- Location Input. -->
+					<div class="input-field col s6">
+			    		<input id="locationInput" type="text">
+			    		<label for="locationInput">Location</label>
+					</div>
+		
+					<!-- Range Input. -->
+					<div class="col s12">
+						<p class="center orange-text text-darken-2">Number of results?</p>
+						<p class="range-field">
+							<input id="resultsNumInput" type="range" min="1" max="30" value="10"/>
+						</p>
+					</div>
+
+<!-- 					<div class="input-field col s12">
+			    		<input id="resultsNumInput" type="text">
+			    		<label for="resultsNumInput">Number</label>
+					</div> -->
+					<!-- Preset Selections 1. -->
+					<div class="col s12 m6 l4">
+						<ul class="collection">
+							<li class="collection-item avatar modal-highlight">
+								<a href="#">
+									<img src="http://placehold.it/50x50" alt="" class="image-circle-modal">
+								</a>
+								<p>&nbsp;</p>
+								<span class="title">Arts</span>
+
+								<a href="#" class="secondary-content searchIcon"><i class="material-icons orange-text text-accent-4 hide-768px">room</i></a>
+							</li>
+							<li class="collection-item avatar modal-highlight">
+								<a href="#">
+									<img src="http://placehold.it/50x50" alt="" class="image-circle-modal">
+								</a>
+								<p>&nbsp;</p>
+								<span class="title">Business</span>
+								
+								<a href="#" class="secondary-content searchIcon"><i class="material-icons orange-text text-accent-4 hide-768px">room</i></a>
+							</li>
+							<li class="collection-item avatar modal-highlight">
+								<a href="#">
+									<img src="http://placehold.it/50x50" alt="" class="image-circle-modal">
+								</a>
+								<p>&nbsp;</p>
+								<span class="title">Dancing</span>
+								
+								<a href="#" class="secondary-content searchIcon"><i class="material-icons orange-text text-accent-4 hide-768px">room</i></a>
+							</li>
+						</ul>
+					</div> <!-- End of preset selections 1. -->
+	
+					<!-- Preset Selections 2. -->
+					<div class="col s12 m6 l4">
+						<ul class="collection">
+							<li class="collection-item avatar modal-highlight">
+								<a href="#">
+									<img src="http://placehold.it/50x50" alt="" class="image-circle-modal">
+								</a>
+								<p>&nbsp;</p>
+								<span class="title">Fitness</span>
+								
+								<a href="#" class="secondary-content searchIcon"><i class="material-icons orange-text text-accent-4 hide-768px">room</i></a>
+							</li>
+							<li class="collection-item avatar modal-highlight">
+								<a href="#">
+									<img src="http://placehold.it/50x50" alt="" class="image-circle-modal">
+								</a>
+								<p>&nbsp;</p>
+								<span class="title">Foodies</span>
+								
+								<a href="#" class="secondary-content searchIcon"><i class="material-icons orange-text text-accent-4 hide-768px">room</i></a>
+							</li>
+							<li class="collection-item avatar modal-highlight">
+								<a href="#">
+									<img src="http://placehold.it/50x50" alt="" class="image-circle-modal">
+								</a>
+								<p>&nbsp;</p>
+								<span class="title">Games</span>
+								
+								<a href="#" class="secondary-content searchIcon"><i class="material-icons orange-text text-accent-4 hide-768px">room</i></a>
+							</li>
+						</ul>
+					</div> <!-- End of preset selections 2. -->
+	
+					<!-- Preset Selections 3. -->
+					<div class="col s12 m6 l4">
+						<ul class="collection">
+							<li class="collection-item avatar modal-highlight">
+								<a href="#">
+									<img src="http://placehold.it/50x50" alt="" class="image-circle-modal">
+								</a>
+								<p>&nbsp;</p>
+								<span class="title">Movies</span>
+								
+								<a href="#" class="secondary-content searchIcon"><i class="material-icons orange-text text-accent-4 hide-768px">room</i></a>
+							</li>
+							<li class="collection-item avatar modal-highlight">
+								<a href="#">
+									<img src="http://placehold.it/50x50" alt="" class="image-circle-modal">
+								</a>
+								<p>&nbsp;</p>
+								<span class="title" val="music">Music</span>
+								
+								<a href="#" class="secondary-content searchIcon"><i class="material-icons orange-text text-accent-4 hide-768px">room</i></a>
+							</li>
+							<li class="collection-item avatar modal-highlight">
+								<a href="#">
+									<img src="http://placehold.it/50x50" alt="" class="image-circle-modal">
+								</a>
+								<p>&nbsp;</p>
+								<span class="title">Outdoors</span>
+								
+								<a href="#" class="secondary-content searchIcon"><i class="material-icons orange-text text-accent-4 hide-768px">room</i></a>
+							</li>
+						</ul>
+					</div> <!-- End of preset selections 3. -->	
+				</div>
+			</form> <!-- End of meetup api search form. -->
+	    </div>
+		
+		<!-- Submit Modal Button. -->
+		<div class="modal-footer">
+			<a href="#!" class="modal-action modal-close waves-effect waves-orange btn-flat" id="searchBtn">Submit!</a>
+		</div>
+	</div> <!-- End of Modal 1 Info. -->
+
+
+	<!-- Modal 2 Info. -->
+	<div id="modal2" class="modal">
+		<div class="modal-content">
+			<h4 class="center">Events</h4>
+			<br>
+				
+			<div class="row">
+				<!-- Start of meetup info card boxes. -->
+			</div>
+	    </div>
+
+		<!-- Close Modal. -->
+	    <div class="modal-footer">
+	    	<a href="#!" class="modal-action modal-close waves-effect waves-orange btn-flat ">Close</a>
+	    </div>
+	</div> <!-- End of Modal 2 Info. -->
+
+	<!-- Modal 3 Info. -->
+	<div id="modal3" class="modal bottom-sheet">
+		<div class="modal-content">
+			<div class="container">
+				<div class="row">
+					<div class="col s12 text-justify typewriter">
+						<h4 class="center">Our Story</h4>
+						<!-- This p tag contains our story JS text input. -->
+						<p></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Close Modal. -->
+		<div class="modal-footer">
+	    	<a href="#!" class="modal-action modal-close waves-effect waves-orange btn-flat">Close</a>
+		</div>
+	</div> <!-- End of Modal 3 Info. -->
+
+	<!-- Modal 4 Info -->
+	<div id="modal4" class="modal bottom-sheet">
+		<div class="row">
+			<div class="col s12">
+				<br>
+				<h4 class="center">Meet the Creators!</h4>
+				<br>
+			</div>
+			
+			<!-- Start of creators info box. -->
+			<div class="col s10 m4 l3 offset-l1-5">
+				<div class="card profile-card">
+					<div class="card-image waves-effect waves-block waves-black">
+						<img class="activator profile-pic" src="assets/portfolio/pic.jpg">
+					</div>
+
+					<!-- Creator card box. -->
+					<div class="card-content">
+						<!-- Tuan Info. -->
+						<span class="card-title activator grey-text text-darken-4 card-title-changes name-font">Tuan Tran<i class="material-icons right">more_vert</i></span>
+						
+						<div class="row">
+
+							<!-- Github Link -->
+							<div class="col s4 red linkAnimation icon-margin-change">
+								<a class="portfolio-link" href="https://github.com/tuanqtran" target="_blank"><p class="center-align"><img class="portfolio-image" src="assets/portfolio/github.png"></p></a>
+							</div>
+
+							<!-- Linkedin Link -->
+							<div class="col s4 green linkAnimation icon-margin-change portfolio-border">
+								<a href="https://www.linkedin.com/in/tranqtuan" target="_blank"><p class="center-align"><img class="portfolio-image" src="assets/portfolio/linkedin.png"></p></a>
+							</div>
+
+							<!-- Twitter Link -->
+							<div class="col s4 blue linkAnimation icon-margin-change">
+								<a href="https://twitter.com/Tuan_QTran" target="_blank"><p class="center-align"><img class="portfolio-image" src="assets/portfolio/twitter.png"></p></a>
+							</div>
+						</div>
+					</div>
+
+					<!-- Additional creator info. -->
+					<div class="card-reveal">
+						<span class="card-title grey-text text-darken-4">Tuan Tran's Bio<i class="material-icons right eventClose">close</i></span>
+						<p class="text-justify line-height"><br><strong>Tuan</strong> graduated from Lamar University with a B.S. in Electrical Engineering and Minor in Mathematics. He developed an autonomous solar power charging station and has prior experience in Programmable Logic Controller (PLC) Programming.</p>
+						<br>
+						<p class="text-justify line-height">Prior to starting the UT Coding Camp,  he was a Volunteer Coordinator and Lion Dancer for the Buu Mon Buddhist Temple, and Culture Leader for Lamar University International Student Council. Recently, he helped “Keep Austin Beautiful” alongside 4,000 plus volunteers removing 29 tons of trash within Austin, Texas.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col s10 m4 l3 offset-s1">
+				<div class="card profile-card">
+					<div class="card-image waves-effect waves-block waves-black">
+						<img class="activator profile-pic" src="assets/portfolio/pic2.jpg">
+					</div>
+
+					<!-- Creator card box. -->
+					<div class="card-content">
+						<!-- Marcus Info. -->
+						<span class="card-title activator grey-text text-darken-4 card-title-changes name-font">Marcus Lam<i class="material-icons right">more_vert</i></span>
+						
+						<div class="row">
+
+							<!-- Github Link -->
+							<div class="col s4 red linkAnimation icon-margin-change">
+								<a class="portfolio-link" href="https://github.com/marcus-lam" target="_blank"><p class="center-align"><img class="portfolio-image" src="assets/portfolio/github.png"></p></a>
+							</div>
+
+							<!-- Linkedin Link -->
+							<div class="col s4 green linkAnimation icon-margin-change portfolio-border">
+								<a href="https://www.linkedin.com/in/marcus-lam-08427812a" target="_blank"><p class="center-align"><img class="portfolio-image" src="assets/portfolio/linkedin.png"></p></a>
+							</div>
+
+							<!-- Twitter Link -->
+							<div class="col s4 blue linkAnimation icon-margin-change">
+								<a href="mailto:lamwc@vcu.edu"><p class="center-align"><img class="portfolio-image" src="assets/portfolio/gmail.png"></p></a>
+							</div>
+						</div>
+					</div>
+			
+					<!-- Additional creator info. -->
+					<div class="card-reveal">
+						<span class="card-title grey-text text-darken-4">Marcus Lam's Bio<i class="material-icons right eventClose">close</i></span>
+						<p class="text-justify line-height"><br><strong>Marcus</strong> graduated summa cum laude (4.0 GPA) from Virginia Commonwealth University with a B.S. in Economics. Despite his academic discipline, he has always been interested in technology. He started gaming when he was five and built his first computer when he was ten.</p>
+						<br>
+						<p class="text-justify line-height">Originally born in Hong Kong, Marcus has been moving around his whole life; he has lived in Hong Kong, Shanghai, Richmond, Houston, Toronto, and Austin. Currently, he is attending the Coding Bootcamp @ UT Austin with an expected graduation date of January 2017.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col s10 m4 l3 offset-s1">
+				<div class="card profile-card">
+					<div class="card-image waves-effect waves-block waves-black">
+						<img class="activator profile-pic" src="assets/portfolio/pic3.jpg">
+					</div>
+
+					<!-- Creator card box. -->
+					<div class="card-content">
+						<!-- Brandon Info. -->
+						<span class="card-title activator grey-text text-darken-4 card-title-changes name-font">Brandon Short<i class="material-icons right">more_vert</i></span>
+						
+						<div class="row">
+
+							<!-- Github Link -->
+							<div class="col s4 red linkAnimation icon-margin-change">
+								<a class="portfolio-link" href="https://github.com/blshort43" target="_blank"><p class="center-align"><img class="portfolio-image" src="assets/portfolio/github.png"></p></a>
+							</div>
+
+							<!-- Linkedin Link -->
+							<div class="col s4 green linkAnimation icon-margin-change portfolio-border">
+								<a href="https://www.linkedin.com/in/brandon-short-1127324a" target="_blank"><p class="center-align"><img class="portfolio-image" src="assets/portfolio/linkedin.png"></p></a>
+							</div>
+
+							<!-- Twitter Link -->
+							<div class="col s4 blue linkAnimation icon-margin-change">
+								<a href="mailto:blshort43@gmail.com"><p class="center-align"><img class="portfolio-image" src="assets/portfolio/gmail.png"></p></a>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Additional creator info. -->
+					<div class="card-reveal">
+						<span class="card-title grey-text text-darken-4">Brandon Short's Bio<i class="material-icons right eventClose">close</i></span>
+						<p class="text-justify line-height"><br><strong>Brandon</strong> graduated from the University of Wisconsin - Milwaukee in 2011 with a B.S. in Communication. He moved to Austin in November 2013 to escape the arctic winters of the north and has no plans of going back.</p>
+						<br>
+						<p class="text-justify line-height">After spending many years of his life trying to deny that he is a computer nerd, he has finally accepted his true calling and began developer training in 2016 at the Coding Bootcamp @ UT Austin. He is looking forward to a career as a full stack developer and many more hours on the Internet.</p>
+					</div>
+				</div>
+			</div> <!-- End of creators info box. -->
+		</div>
+
+		<!-- Close Modal. -->
+		<div class="modal-footer">
+	    	<a href="#!" class=" modal-action modal-close waves-effect waves-black btn-flat">Close</a>
+		</div>
+	</div> <!-- End of Modal 4 Info. -->
+
+	<!-- Reference to jQuery version 2.2.3. -->
+	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"
+	></script>
+	<!-- Reference to Materialize.min javascript sheet. -->
+	<script src="assets/javascript/materialize.min.js"></script>
+	<!-- Reference to Javascript Style.min sheet. -->
+	<script src="assets/javascript/style.min.js"></script>
+	<!-- Reference to Typeit.min library. -->
+	<script src="assets/libraries/typeit-master/dev/typeit.min.js"></script>
+	<!-- Reference to Google Maps api. -->
+	<!-- Brandon: AIzaSyCuj3o9FkNZuGQRckiKjVtHlybRDBRzofw -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVeShHGpXuf4-UBpyS9yLawejNCC979VI&callback=initMap" async defer></script>
+	<!-- Reference to Simple Weather api. -->	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
+	<!-- Reference to Moment.js library. -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+	<!-- Reference to our Javascript api file. -->	
+	<script src="assets/javascript/api.js"></script>
+	<!-- Reference to Firebase.js. -->
+	<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+	<!-- Reference to our Firebase.js file. -->
+	<script src="assets/javascript/firebase.js"></script>
+
+</body>
+</html>
